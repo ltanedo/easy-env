@@ -1,0 +1,10 @@
+LICENSE.txt
+README.md
+setup.cfg
+setup.py
+easy_environ/__init__.py
+easy_environ/environ.py
+easy_environ.egg-info/PKG-INFO
+easy_environ.egg-info/SOURCES.txt
+easy_environ.egg-info/dependency_links.txt
+easy_environ.egg-info/top_level.txt

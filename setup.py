@@ -1,20 +1,16 @@
 from distutils.core import setup
 setup(
-  name = 'easy_environ',         # How you named your package folder (MyLib)
-  packages = ['easy_environ'],   # Chose the same as "name"
+  name = 'easy_env',         # How you named your package folder (MyLib)
+  packages = ['easy_env'],   # Chose the same as "name"
   version = '0.1',      # Start with a small number and increase it with every change you make
   license='MIT',        # Chose a license from here: https://help.github.com/articles/licensing-a-repository
   description = 'A library to set environment variables using shell rc files',   # Give a short description about your library
   author = 'lloydtan',                   # Type in your name
   author_email = 'lloydtan@buffalo.edu',      # Type in your E-Mail
   url = 'https://github.com/ltanedo/easy-environ.git',   # Provide either the link to your github or to your website
-  download_url = 'https://github.com/ltanedo/easy-environ/archive/refs/tags/v_01.tar.gz',    # I explain this later on
+  download_url = 'https://github.com/ltanedo/easy-env/archive/refs/tags/v_01.tar.gz',    # I explain this later on
   keywords = ['python', 'env', 'environment'],   # Keywords that define your package best
   install_requires=[            # I get to this in a second
-          'glob',
-          'os',
-          'sys',
-          'subprocess'
       ],
   classifiers=[
     'Development Status :: 3 - Alpha',      # Chose either "3 - Alpha", "4 - Beta" or "5 - Production/Stable" as the current state of your package
