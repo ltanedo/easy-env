@@ -63,6 +63,8 @@ def set_unix_var(key, value):
             pattern = f"export {key}="
             if pattern in line:
                 data[i] =  f"export {key}='{value}';\n"
+                VAR_EXISTS = True
+
         
         if not VAR_EXISTS:
             data.append(f"export {key}='{value}';\n")
@@ -81,7 +83,7 @@ def set_win_var(key, value):
 
 
 
-def set_universal_env_var(key, value):
+def set_env_var(key, value):
     '''
         input:  (str) env_key , (str) env_value
         output: None
@@ -94,4 +96,40 @@ def set_universal_env_var(key, value):
     
     else:
        set_unix_var(key,value)
-    
+
+
+def get_env_dict():
+    '''
+        input:  None
+        output: list of env key value pairs (dict)
+    '''
+    rc_path = get_rc_path()
+     
+    # with is like your try .. finally block in this case
+    env_list = []
+    env_dict = {}
+    with open(os.path.expanduser(rc_path), 'r') as file:
+        data = file.readlines()
+        for i, line in enumerate(data):
+            pattern = f"export"
+            if pattern in line and "#" not in line:
+                env_list.append(line)
+        
+        for i in range(len(env_list)):
+            # replace certain char
+            line = env_list[i]
+            line = line.replace(";","").replace("export","").replace(" ","")
+            key, value = line.split("=")
+            value = value.replace("'",'').replace("\n","")
+
+            env_dict[key] = value
+
+    return env_dict        
+
+def get_env_var(key):
+    try:
+        env_dict = get_env_dict()
+        return env_dict[key]
+    except:
+        raise Exception("ENV Variable Doesn't Exist")
+
